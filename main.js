@@ -11,7 +11,7 @@
             if(result){
                 let number = Object.keys(result.realResults).length;
                 newdata.push(number);
-                console.log(newdata);
+                // console.log(newdata);
             }else {
                 console.log('Error')
             }
@@ -22,6 +22,7 @@
     const ajaxCalls = [ajax_0, ajax_1, ajax_2].filter(a => a !== null);
 
     (async ()=> {
+ 
         Promise.all(ajaxCalls.map(a =>jQuery.ajax(a)))
         .then(data => {
             console.log("all finished", data);
