@@ -21,30 +21,32 @@
 
     const ajaxCalls = [ajax_0, ajax_1, ajax_2].filter(a => a !== null);
 
-    Promise.all(ajaxCalls.map(a =>jQuery.ajax(a)))
-    .then(data => {
-        console.log("all finished", data);
-        
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-            labels: labels,
-                datasets: [{
-                    label: '3 last elections',
-                    backgroundColor: '#6a5acd',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: newdata,
-                }]
-            },
-            options: {
-                tooltips: {
-                    mode: 'index',
+    (async ()=> {
+        Promise.all(ajaxCalls.map(a =>jQuery.ajax(a)))
+        .then(data => {
+            console.log("all finished", data);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                labels: labels,
+                    datasets: [{
+                        label: 'Elections',
+                        backgroundColor: '#6a5acd',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: newdata,
+                    }]
+                },
+                options: {
+                    tooltips: {
+                        mode: 'index',
+                    }
                 }
-            }
+            })
+        }).catch(err=> {
+            // something went wrong show error in console
+            console.log(new Error(err));
         })
-    }).catch(err=> {
-        // something went wrong show error in console
-        console.log(new Error(err));
-    })
+})();
 
 })()
