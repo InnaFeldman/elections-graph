@@ -45,7 +45,7 @@
                 }
             })
         }).catch(err=> {
-            console.log(new Error(err));
+            console.log(new Error(err));////
         })
 })();
 
