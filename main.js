@@ -44,7 +44,6 @@
                 }
             })
         }).catch(err=> {
-            // something went wrong show error in console
             console.log(new Error(err));
         })
 })();
